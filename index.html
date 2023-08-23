@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="functio()"></button>
+    <script>
+      let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      while (true) {
+        let action = prompt(
+          "Чтобы получить список чисел, нажите 1\nЧтобы добавить число в список,нажите 2\nЧтобы получить число по индексу, нажмите 3\nЧтобы удалить последнее число списка, нажмите 4\nЧтобы удалить число по индексу, нажмите 5 "
+        );
+        switch (action) {
+          case "1":
+            result = alert(numbers);
+            break;
+
+          case "2":
+            let newNumber = prompt("Введите число, которое вы хотите добавить");
+            numbers.push(newNumber);
+            break;
+          case "3":
+            let index = prompt(
+              "Введите индекс числа, которое вы хотите посмотреть"
+            );
+            result = alert(numbers[index]);
+            break;
+          case "4":
+            numbers.pop();
+            break;
+          case "5":
+            let remoteNumber = prompt(
+              "Введите индекс числа, которое вы хотите удалить"
+            );
+            numbers.splice(remoteNumber, 1);
+        }
+      }
+    </script>
+  </body>
+</html>
