@@ -6,12 +6,12 @@
     <title>Document</title>
   </head>
   <body>
-    <button onclick="functio()"></button>
     <script>
       let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
       while (true) {
         let action = prompt(
-          "Чтобы получить список чисел, нажите 1\nЧтобы добавить число в список,нажите 2\nЧтобы получить число по индексу, нажмите 3\nЧтобы удалить последнее число списка, нажмите 4\nЧтобы удалить число по индексу, нажмите 5 "
+          "Чтобы получить список чисел, нажите 1\nЧтобы добавить число в список,нажите 2\nЧтобы получить число по индексу, нажмите 3\nЧтобы удалить последнее число списка, нажмите 4\nЧтобы удалить число по индексу, нажмите 5\nЧтобы получить сумму всех чисел нажите 6\nЕсли хотите вывести все числа, умноженные на 2, нажмите 7\nЕсли вы хотите вывести все значения как текст, нажмите 8 "
         );
         switch (action) {
           case "1":
@@ -20,6 +20,7 @@
 
           case "2":
             let newNumber = prompt("Введите число, которое вы хотите добавить");
+            newNumber = Number(newNumber);
             numbers.push(newNumber);
             break;
           case "3":
@@ -36,6 +37,24 @@
               "Введите индекс числа, которое вы хотите удалить"
             );
             numbers.splice(remoteNumber, 1);
+            break;
+          case "6":
+            let sum = 0;
+            function count(arrayElement, index) {
+              sum += arrayElement;
+            }
+            numbers.forEach(count);
+            alert(sum);
+            break;
+          case "7":
+            numbers.forEach((arrayElement) => {
+              result = alert(arrayElement * 2);
+            });
+            break;
+          case "8":
+            textResult = numbers.toString();
+            alert(textResult);
+            break;
         }
       }
     </script>
