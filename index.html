@@ -11,7 +11,22 @@
 
       while (true) {
         let action = prompt(
-          "Чтобы получить список чисел, нажите 1\nЧтобы добавить число в список,нажите 2\nЧтобы получить число по индексу, нажмите 3\nЧтобы удалить последнее число списка, нажмите 4\nЧтобы удалить число по индексу, нажмите 5\nЧтобы получить сумму всех чисел нажите 6\nЕсли хотите вывести все числа, умноженные на 2, нажмите 7\nЕсли вы хотите вывести все значения как текст, нажмите 8 "
+          `
+          Чтобы получить список чисел, нажите 1
+          Чтобы добавить число в список,нажите 2
+          Чтобы получить число по индексу, нажмите 3
+          Чтобы удалить последнее число списка, нажмите 4
+          Чтобы удалить число по индексу, нажмите 5
+          Чтобы получить сумму всех чисел нажите 6
+          Если хотите вывести числа, умноженные на 2, нажмите 7
+          Если вы хотите вывести все значения как текст, нажмите 8 
+          Если вы хотите вывести все четные значения, нажмите 9
+Если вы хотите узнать, есть ли числа больше x(любое число), нажмите 10
+Если вы хотите удалить число х(любое число), нажмите 11
+Чтобы вывести квадраты чисел, нажмите 12
+Чтобы удалить все числа, которые делятся на x(любое число), нажмите 13
+Чтобы узнать, есть ли в массиве x(любое число), нажите 14
+      `
         );
         switch (action) {
           case "1":
@@ -33,10 +48,10 @@
             numbers.pop();
             break;
           case "5":
-            let remoteNumber = prompt(
+            let remoteIndexNumber = prompt(
               "Введите индекс числа, которое вы хотите удалить"
             );
-            numbers.splice(remoteNumber, 1);
+            numbers.splice(remoteIndexNumber, 1);
             break;
           case "6":
             let sum = 0;
@@ -52,8 +67,66 @@
             });
             break;
           case "8":
-            textResult = numbers.toString();
-            alert(textResult);
+            numbers.forEach((arrayElement, index) => {
+              alert(
+                "Элемент " + arrayElement + " расположен под индексом " + index
+              );
+            });
+            break;
+          case "9":
+            tableWithEvenNumbers = numbers.filter((number) => number % 2 == 0);
+            alert(tableWithEvenNumbers);
+            break;
+          case "10":
+            ifThereMoreNumber = prompt(
+              "Введите число, с которым надо сравнить элементы массива"
+            );
+            ifThereMoreNumber = Number(ifThereMoreNumber);
+            ifThereMore = numbers.some((number) => number > ifThereMoreNumber);
+            if (ifThereMore == true) {
+              alert("Да, такие числа есть");
+            } else {
+              alert("Таких чисел нет");
+            }
+            break;
+          case "11":
+            remoteNumber = prompt("Введите число, которое надо удалить");
+            remoteNumber = Number(remoteNumber);
+            numbers = numbers.filter((number) => number !== remoteNumber);
+            // или
+            // remoteNumber = prompt("Введите число, которое надо удалить");
+            // remoteNumber = Number(remoteNumber);
+            // indexRemoteNumber = numbers.findIndex(
+            //   (number) => number == remoteNumber
+            // );
+            // indexRemoteNumber = Number(indexRemoteNumber);
+            // numbers.splice(indexRemoteNumber, 1);
+
+            break;
+          case "12":
+            tableNumberSquares = numbers.map((number) => number * number);
+            alert(tableNumberSquares);
+            break;
+          case "13":
+            dividedNumber = prompt("Введите число, на которое надо разделить");
+            dividedNumber = Number(dividedNumber);
+            tableWithoutDividedNumbers = numbers.filter(
+              (number) => number % dividedNumber !== 0
+            );
+            alert(tableWithoutDividedNumbers);
+            break;
+          case "14":
+            // Тут надо было делать с includes, но я забыл про него
+            desiredNumber = prompt(
+              "Введите число, чтобы узнать есть ли оно в массиве"
+            );
+            desiredNumber = Number(desiredNumber);
+            isDesiredNumber = numbers.some((number) => number == desiredNumber);
+            if (isDesiredNumber == true) {
+              alert("Такое число есть");
+            } else {
+              alert("Такого числа нет");
+            }
             break;
         }
       }
